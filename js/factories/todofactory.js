@@ -6,11 +6,11 @@
 		.factory("theList", theList);
 
 	var list = [
-		{
-			"name": 3232,
-			"complete": false,
-			"edit": false
-		}
+		// {
+		// 	"name": 3232,
+		// 	"complete": false,
+		// 	"edit": false
+		// }
 
 	];
 

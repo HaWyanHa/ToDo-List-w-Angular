@@ -23,15 +23,15 @@
 
         <main ng-controller="todoController as td">
             <form ng-submit="td.save(testing)" name="testing">
-                <input type='text' class='new-todo' placeholder='What needs to be done?' ng-model="td.newToDo.name">
+                <input required type='text' class='new-todo' placeholder='What needs to be done?' ng-model="td.newToDo.name">
             </form>
 
             <ul class='items'>
                 <li ng-repeat="foo in td.all">
-                    <article ng-class="{completed: foo.complete}">
+                    <article ng-class="{completed: foo.complete, editing: foo.edit}">
                         <button class='check' ng-click="td.finish(foo)"></button>
-                        <p>{{foo.name}}</p>
-                        <input type='text' class='edit-todo' value='learn html'>
+                        <p ng-click="td.edit(foo)">{{foo.name}}</p>
+                        <input ng-model="foo.name" type='text' class='edit-todo' value='' ng-keydown="td.enter($event, foo)">
                         <button class='delete' ng-click="td.remove(foo)">X</button>
                     </article>
                 </li>
@@ -76,7 +76,7 @@
                         <li><button class='show-completed'>Completed</button></li>
                     </ul>
                 </nav>
-                <button class='clear'>Clear completed</button>
+                <button class='clear' ng-click="td.clear()">Clear completed</button>
             </footer>
         </main>
     </body>
