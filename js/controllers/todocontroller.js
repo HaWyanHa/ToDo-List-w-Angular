@@ -22,7 +22,11 @@
 			console.log("it works", form);
 			if (form.$valid) {
 				this.all.push(this.newToDo);
-				this.newToDo = {};
+				this.newToDo = {
+					name: "",
+            		complete: false,
+            		edit: false,
+				};
 			}
 			console.log(this.all);
 		}
@@ -77,8 +81,14 @@
 			}
 		}
 
-		this.clear = function clear () {
-			console.log("ugh");
+		this.clear = function clear (data) {
+			var that = this;
+			this.all.forEach(function(element, i){     //I feel like I could use the function that I already made earlier here but I don't know how.
+				if (element.complete === true) {
+					that.all.splice(i, 1);
+
+				};
+			})
 		}
 
 
