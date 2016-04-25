@@ -2,7 +2,7 @@
 	"use strict";
 
 	angular
-		.module("todo", [])
+		.module("todo")
 		.controller("todoController", todoController);
 
 	todoController.$inject = ["theList"];
