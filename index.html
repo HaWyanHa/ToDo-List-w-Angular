@@ -27,7 +27,7 @@
             </form>
 
             <ul class='items'>
-                <li ng-repeat="foo in td.all">
+                <li ng-repeat="foo in td.all | filter: td.filter">
                     <article ng-class="{completed: foo.complete, editing: foo.edit}">
                         <button class='check' ng-click="td.finish(foo)"></button>
                         <p ng-click="td.edit(foo)">{{foo.name}}</p>
@@ -71,9 +71,9 @@
                 <p class='remaining'><span class='incomplete-items'>{{td.counter()}}</span> items left</p>
                 <nav>
                     <ul>
-                        <li><button class='show-all active'>All</button></li>
-                        <li><button class='show-active'>Active</button></li>
-                        <li><button class='show-completed'>Completed</button></li>
+                        <li><button ng-class="{active: td.allActive}" ng-click="td.showAll()" class='show-all active'>All</button></li>
+                        <li><button ng-class="{active: td.incompleteActive}" ng-click="td.showActive()" class='show-active'>Active</button></li>
+                        <li><button ng-class="{active: td.completeActive}" ng-click="td.completedItem()" class='show-completed'>Completed</button></li>
                     </ul>
                 </nav>
                 <button class='clear' ng-click="td.clear()">Clear completed</button>

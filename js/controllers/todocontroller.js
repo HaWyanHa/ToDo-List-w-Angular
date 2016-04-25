@@ -91,6 +91,36 @@
 			})
 		}
 
+		this.completedItem = function completedItem () {
+			this.filter = {complete: true};
+			
+			this.allActive = false;
+			this.incompleteActive = false;
+			this.completeActive = true;
+		}
+
+		this.showAll = function showAll () {
+			this.filter = false;
+			
+			this.allActive = true;
+			this.incompleteActive = false;
+			this.completeActive = false;
+			// if (this.Active) {
+			// 	this.Active = false;
+			// 	}else {
+			// 		this.Active = true;
+			// 	}
+			// console.log(this.Active);
+		}
+
+		this.showActive = function showActive() {
+			this.filter = {complete: false};
+
+			this.allActive = false;
+			this.incompleteActive = true;
+			this.completeActive = false;
+		}
+
 
 	}
 
