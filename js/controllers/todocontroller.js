@@ -9,7 +9,7 @@
 
 	//this does creates the list and the array
 	function todoController(theList) {
-		this.all = theList;
+		this.all = theList.data;
 		console.log(this.all);
 
 		this.newToDo = {
@@ -22,6 +22,7 @@
 			console.log("it works", form);
 			if (form.$valid) {
 				this.all.push(this.newToDo);
+				theList.save(this.all);
 				this.newToDo = {
 					name: "",
             		complete: false,
@@ -29,13 +30,13 @@
 				};
 			}
 			console.log(this.all);
-		}
+		};
 
 		this.counter = function counter(){
 			var count = 0;
 			this.all.forEach(function(data){
 				if (!data.complete) {
-					count = count + 1
+					count = count + 1;
 				}
 			});
 			return count;	
@@ -46,13 +47,13 @@
 				if (element.$$hashKey === object.$$hashKey) {
 				return i;
 				}
-			})
-		}
+			});
+		};
 
 		this.remove = function remove(todoitem){
 			var i = this.findIndexOf(todoitem);
 			this.all.splice(i, 1);
-		}
+		};
 
 		this.finish = function finish (todoitem){
 			var i = this.findIndexOf(todoitem);
@@ -62,7 +63,7 @@
 				todoitem.complete = true;
 			}
 			console.log(todoitem);
-		}
+		};
 
 		this.edit = function edit (todoitem) {
 			var i = this.findIndexOf(todoitem);
@@ -71,7 +72,7 @@
 			} else{
 				todoitem.edit = true;
 			}
-		}
+		};
 
 		this.enter = function enter (event, todoitem) {
 			var i = this.findIndexOf(todoitem);
@@ -79,7 +80,7 @@
 				console.log("clicked enter");
 				todoitem.edit = false;
 			}
-		}
+		};
 
 		this.clear = function clear (data) {
 			var that = this;
@@ -87,9 +88,9 @@
 				if (element.complete === true) {
 					that.all.splice(i, 1);
 
-				};
-			})
-		}
+				}
+			});
+		};
 
 		this.completedItem = function completedItem () {
 			this.filter = {complete: true};
@@ -97,7 +98,7 @@
 			this.allActive = false;
 			this.incompleteActive = false;
 			this.completeActive = true;
-		}
+		};
 
 		this.showAll = function showAll () {
 			this.filter = false;
@@ -111,7 +112,7 @@
 			// 		this.Active = true;
 			// 	}
 			// console.log(this.Active);
-		}
+		};
 
 		this.showActive = function showActive() {
 			this.filter = {complete: false};
@@ -119,7 +120,7 @@
 			this.allActive = false;
 			this.incompleteActive = true;
 			this.completeActive = false;
-		}
+		};
 
 
 	}
